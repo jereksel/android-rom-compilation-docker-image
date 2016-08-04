@@ -18,14 +18,15 @@ RUN chmod 755 /usr/local/bin/repo
 
 VOLUME ["/tmp/ccache", "/workspace"]
 
-RUN apt-get install -y lib32z1 lib32ncurses5
+RUN apt-get install -y lib32z1 lib32ncurses5 vim nano
 
-COPY init.sh /init.sh
+#COPY init.sh /init.sh
 
-RUN chmod 775 /init.sh
+#RUN chmod 775 /init.sh
 
 RUN useradd -ms /bin/bash android
 USER android
 ENV USER android
 
 WORKDIR /workspace
+#CMD ["/bin/bash", "--init-file", "/workspace/init.sh"]
