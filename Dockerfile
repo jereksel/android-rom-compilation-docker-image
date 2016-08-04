@@ -30,3 +30,4 @@ ENV USER android
 
 WORKDIR /workspace
 #CMD ["/bin/bash", "--init-file", "/workspace/init.sh"]
+
