@@ -2,11 +2,14 @@ FROM ubuntu:xenial
 
 MAINTAINER Andrzej Ressel "jereksel@gmail.com"
 
-RUN apt-get update -qq
-
 #Required packages
-RUN apt-get install -y git ccache automake lzop bison gperf build-essential zip curl g++-multilib python-networkx libxml2-utils bzip2 libbz2-dev libbz2-1.0 libghc-bzlib-dev squashfs-tools pngcrush schedtool dpkg-dev liblz4-tool make optipng
-RUN apt-get install -y openjdk-8-jdk openjdk-8-jre wget htop
+RUN apt-get update -qq \
+ && apt-get install -y git ccache automake lzop bison gperf build-essential zip \
+                       curl g++-multilib python-networkx libxml2-utils bzip2 libbz2-dev \
+                       libbz2-1.0 libghc-bzlib-dev squashfs-tools pngcrush schedtool \
+                       dpkg-dev liblz4-tool make optipng openjdk-8-jdk openjdk-8-jre wget htop \
+                       lib32z1 lib32ncurses5 vim nano \
+ && apt-get clean
 
 #Ccache setup
 ENV USE_CCACHE 1
@@ -17,8 +20,6 @@ RUN wget -O /usr/local/bin/repo https://commondatastorage.googleapis.com/git-rep
 RUN chmod 755 /usr/local/bin/repo
 
 VOLUME ["/tmp/ccache", "/workspace"]
-
-RUN apt-get install -y lib32z1 lib32ncurses5 vim nano
 
 #COPY init.sh /init.sh
 
