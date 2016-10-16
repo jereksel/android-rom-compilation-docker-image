@@ -1,14 +1,14 @@
-FROM ubuntu:xenial
+FROM ubuntu:15.04
 
 MAINTAINER Andrzej Ressel "jereksel@gmail.com"
 
 #Required packages
 RUN apt-get update -qq \
- && apt-get install -y git ccache automake lzop bison gperf build-essential zip \
-                       curl g++-multilib python-networkx libxml2-utils bzip2 libbz2-dev \
-                       libbz2-1.0 libghc-bzlib-dev squashfs-tools pngcrush schedtool \
-                       dpkg-dev liblz4-tool make optipng openjdk-8-jdk openjdk-8-jre wget htop \
-                       lib32z1 lib32ncurses5 vim nano \
+ && apt-get install -y --no-install-recommends git-core gnupg flex bison gperf build-essential \
+                       zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 \
+                       lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z-dev ccache \
+                       libgl1-mesa-dev libxml2-utils xsltproc unzip vim nano openjdk-8-jdk \
+                       wget curl python schedtool \
  && apt-get clean
 
 #Ccache setup
